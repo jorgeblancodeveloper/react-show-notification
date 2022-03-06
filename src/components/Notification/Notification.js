@@ -7,24 +7,23 @@ export const Notification = ({ children, onClose }) => {
   const [timerCountdown, setTimerCountdown] = React.useState(
     timeOutRemove / 1000
   );
+  const [notificationStatus, setNotificationStatus] = React.useState("");
   React.useEffect(() => {
-    const timer = setTimeout((e) => {
+    const countDownTimer = setTimeout(() => {
       if (timerCountdown === 0) {
-        //clearInterval(timer);
         setNotificationStatus("--is-timedOut");
         setTimeout(onClose, sassVars.baseAnimationDuration * 2);
       } else {
-        setTimerCountdown((prevCount) => prevCount - 1);
+        setTimerCountdown(prevCount => prevCount - 1);
       }
     }, 1000);
+    return () => {
+      clearTimeout(countDownTimer);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timerCountdown]);
 
-  let countDownTimer;
-  const [notificationStatus, setNotificationStatus] = React.useState("");
-
   const handleOnClose = () => {
-    clearInterval(countDownTimer);
     setNotificationStatus("--is-closing");
     setTimeout(onClose, sassVars.baseAnimationDuration);
   };
