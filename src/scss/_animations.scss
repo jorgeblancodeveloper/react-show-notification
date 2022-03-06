@@ -1,0 +1,47 @@
+
+@keyframes a-fade-in {
+    from {
+      background-color: rgba(0,0,0,0);
+    }
+    to {
+      background-color: rgba(0,0,0,0.6);
+    }
+  }
+  @keyframes a-fade-out {
+    from {
+      background-color: rgba(0,0,0,0.6);
+    }
+    to {
+      background-color: rgba(0,0,0,0);
+    }
+  }
+  @keyframes a-show-element {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes a-remove-element {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-70%);
+    }
+  }
+  @keyframes a-timedout-element {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(70%);
+    }
+  }

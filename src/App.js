@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import LandingPage from "./pages/LandingPage/LandingPage";
+import React from "react";
+import "./scss/app.scss";
+export const appState = React.createContext();
 function App() {
+  const appStateInitialData = {
+    showNotification: false,
+  };
+
+  const [appStateData, setAppStateData] = React.useState(appStateInitialData);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <appState.Provider value={appStateData}>
+      <main>
+        <div className="app">
+          <LandingPage setAppStateData={setAppStateData} />
+        </div>
+      </main>
+    </appState.Provider>
   );
 }
 

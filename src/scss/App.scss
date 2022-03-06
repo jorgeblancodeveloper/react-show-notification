@@ -1,0 +1,44 @@
+$background: #efefef;
+$colorDarkest: #222222;
+$colorSuccess: #4caf50;
+$basePadding: 1em;
+$baseAnimationDurationValue: 0.5;
+$baseAnimationDuration: $baseAnimationDurationValue + s;
+:export {
+  baseAnimationDuration: $baseAnimationDurationValue * 1000;
+}
+
+@mixin flex-center($column: false) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @if $column {
+    flex-direction: column;
+  }
+}
+
+@import "reset";
+@import "animations";
+
+@import "../elements/Button/button";
+@import "../elements/IconClose/icon-close";
+
+@import "../components/Notification/notification";
+
+.app {
+  @include flex-center($column: true);
+  height: 100vh;
+  background: rgb(226, 226, 226);
+  background: radial-gradient(
+    circle,
+    rgba(226, 226, 226, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  color: $colorDarkest;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 1.3em;
+  padding: 1em;
+}

@@ -1,0 +1,22 @@
+.button {
+  background-color: $colorSuccess;
+  border: none;
+  color: white;
+  padding: $basePadding $basePadding * 2;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  &:link,
+  &:visited,
+  &:active {
+    @extend .button;
+  }
+  &:hover {
+    @extend .button;
+    background: darken($colorSuccess, 10%);
+  }
+}

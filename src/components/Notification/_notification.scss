@@ -1,0 +1,70 @@
+.notification {
+  @include flex-center;
+  overflow: hidden;
+  animation-name: a-fade-in;
+  animation-duration: $baseAnimationDuration;
+  animation-timing-function: ease-in-out;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 1em;
+  &__countdown {
+    font-size: 0.8em;
+    margin-top: 2em;
+    color: lighten($colorDarkest, 30%);
+  }
+  &__card {
+    @include flex-center;
+    opacity: 0;
+    animation-name: a-show-element;
+    animation-fill-mode: forwards;
+    animation-duration: $baseAnimationDuration;
+    animation-delay: $baseAnimationDuration/3;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.14, 1.14);
+    background: $background;
+    width: 80%;
+    min-width: 5em;
+    max-width: 25em;
+    min-height: 10em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border-radius: 5px;
+  }
+  &__close {
+    position: absolute;
+    top: $basePadding;
+    right: $basePadding;
+  }
+  &__body {
+    @include flex-center($column: true);
+    padding: $basePadding;
+  }
+  &--is-closing {
+    @extend .notification;
+    animation-name: a-fade-out;
+    animation-duration: $baseAnimationDurationValue/2+s;
+    animation-fill-mode: forwards;
+    .notification__card {
+      opacity: 1;
+      animation-name: a-remove-element;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.42, -0.25, 0.9, 0.63);
+      animation-duration: $baseAnimationDurationValue/2+s;
+    }
+  }
+  &--is-timedOut {
+    @extend .notification;
+    animation-name: a-fade-out;
+    animation-duration: $baseAnimationDurationValue * 2 + s;
+    animation-fill-mode: forwards;
+    .notification__card {
+      opacity: 1;
+      animation-name: a-timedout-element;
+      animation-timing-function: cubic-bezier(0.42, -0.25, 0.9, 0.63);
+      animation-duration: $baseAnimationDurationValue * 2 + s;
+    }
+  }
+}
